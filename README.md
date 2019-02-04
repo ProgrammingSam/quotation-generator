@@ -14,8 +14,9 @@ Usage :
 -------------
 
 - Edit the config.yaml file with your company information;
+- Edit the config.yaml file with your invoice information;
 - Edit/add your clients to the config.yaml file;
-- Invoke the tasks defined in the rakefile to generate an invoice:
+- Invoke the tasks defined in the rakefile to generate an invoice :
 
 ```
 rake -T
