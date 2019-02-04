@@ -1,0 +1,49 @@
+company:
+  bank_account: "539-0075470-34"
+  bank: "ING"
+  bic: "BANKBEBB"
+  city: "Tournai"
+  country: "Belgique"
+  email: "programmingsam@gmail.com"
+  iban: "BE68 5390 0754 7034"
+  name: "ProgrammingSam"
+  owner: "Sami Ben Abbés"
+  phone: "+33 (0)1 22 34 56 76"
+  street: "12 Rue Royale"
+  tva: "BE 0974791429"
+  web: "programmingsam.io"
+  zip_code: "7500"
+
+clients:
+  another:
+    city: "Lille"
+    country: "France"
+    has_tva: "false"
+    name: "Best Client"
+    street: "13 Rue Esquermoise"
+    tva: ""
+    zip_code: "59000"
+
+  someone:
+    city: "Lille"
+    country: "France"
+    has_tva: "true"
+    name: "Awesome Client"
+    street: "123 Rue Solférino"
+    tva: "BE 0934581909"
+    zip_code: "59800"
+
+invoice:
+  date: "1 février 2019"
+  due_date: "1 mars 2019"
+  number: "BE-2019-02-01-A"
+  rate_unit: "€/j"
+  rate: "325"
+  work_description: "Réalisation d'un générateur de factures (rake tasks, yaml, \LaTeX)"
+  work_quantity: "2"
+
+legal:
+  interest: "1"
+  minimal_surcharge: "50"
+  surcharge: "10"
+  tva_rate: "21"
