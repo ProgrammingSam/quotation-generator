@@ -39,7 +39,7 @@ invoice:
   number: "BE-2019-02-01-A"
   rate_unit: "€/j"
   rate: "325"
-  work_description: "Réalisation d'un générateur de factures (rake tasks, yaml, \LaTeX)"
+  work_description: "Réalisation d'un générateur de factures (rake tasks, yaml, LaTeX)"
   work_quantity: "2"
 
 legal:
