@@ -1,0 +1,8 @@
+*.aux
+*.log
+*.gz
+*.pdf
+!example.pdf
+*.tex
+*.yaml
+!config.yaml
