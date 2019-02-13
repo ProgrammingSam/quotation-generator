@@ -22,7 +22,7 @@ Usage :
 rake -T
 rake clean            # Remove any temporary products
 rake clobber          # Remove any generated file
-rake invoice[client]  # Generate 'invoice' for a client
+rake invoice[client]  # Generate an 'invoice' for a client
 ```
 
 **Note :** for zsh users, use `rake invoice\[client\]` synthax.
