@@ -1,0 +1,180 @@
+% Quotation template
+\documentclass[french,11pt]{article}
+
+% Packages
+\usepackage{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\usepackage{units}
+\usepackage{bera}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{fp}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{colortbl}
+
+% Custom colors
+\definecolor{CustomRed}{HTML}{FF5857}
+
+% Variables
+% Company data
+\def\CompanyName{<%= CONFIG['company']['name'] %>}
+\def\CompanyOwner{<%= CONFIG['company']['owner'] %>}
+\def\CompanyTVA{<%= CONFIG['company']['tva'] %>}
+\def\CompanyStreet{<%= CONFIG['company']['street'] %>}
+\def\CompanyZipCode{<%= CONFIG['company']['zip_code'] %>}
+\def\CompanyCity{<%= CONFIG['company']['city'] %>}
+\def\CompanyCountry{<%= CONFIG['company']['country'] %>}
+\def\CompanyPhone{<%= CONFIG['company']['phone'] %>}
+\def\CompanyWeb{<%= CONFIG['company']['web'] %>}
+\def\CompanyEmail{<%= CONFIG['company']['email'] %>}
+\def\CompanyBankAccount{<%= CONFIG['company']['bank_account'] %>}
+\def\CompanyIBAN{<%= CONFIG['company']['iban'] %>}
+\def\CompanyBIC{<%= CONFIG['company']['bic'] %>}
+\def\CompanyBank{<%= CONFIG['company']['bank'] %>}
+
+% Client data
+\def\ClientName{<%= CONFIG['clients'][CLIENT]['name'] %>}
+\def\ClientHasTVA{<%= CONFIG['clients'][CLIENT]['has_tva'] %>}
+\def\ClientTVA{<%= CONFIG['clients'][CLIENT]['tva'] %>}
+\def\ClientStreet{<%= CONFIG['clients'][CLIENT]['street'] %>}
+\def\ClientZipCode{<%= CONFIG['clients'][CLIENT]['zip_code'] %>}
+\def\ClientCity{<%= CONFIG['clients'][CLIENT]['city'] %>}
+\def\ClientCountry{<%= CONFIG['clients'][CLIENT]['country'] %>}
+
+% quotation and work data
+\def\Rate{<%= CONFIG['quotation']['rate'] %>}
+\def\RateUnit{<%= CONFIG['quotation']['rate_unit'] %>}
+\def\WorkQuantity{<%= CONFIG['quotation']['work_quantity'] %>}
+\def\WorkDescription{<%= CONFIG['quotation']['work_description'] %>}
+\def\QuotationDate{<%= CONFIG['quotation']['date'] %>}
+\def\QuotationNumber{<%= CONFIG['quotation']['number'] %>}
+\def\TotalHT{0}
+\def\TotalTVA{0}
+
+% Legal data
+\def\TVARate{<%= CONFIG['legal']['tva_rate'] %>}
+
+% Calculations
+\newcommand{\AddProduct}[3]{
+	\FPround{\price}{#3}{2}
+	\FPeval{\amount}{#2 * #3}
+	\FPround{\amount}{\amount}{2}
+	\FPadd{\TotalHT}{\TotalHT}{\amount}
+	\addto\Products{#1 & \price & #2 & \amount}
+}
+
+\newcommand{\ComputeQuotation}{
+	\cr \Products \cr
+	\FPeval{\TotalTVA}{\TotalHT * \TVARate / 100}
+	\FPadd{\TotalTTC}{\TotalHT}{\TotalTVA}
+	\FPround{\TotalHT}{\TotalHT}{2}
+	\FPround{\TotalTVA}{\TotalTVA}{2}
+	\FPround{\TotalTTC}{\TotalTTC}{2}
+	\global\let\TotalHT\TotalHT
+	\global\let\TotalTVA\TotalTVA
+	\global\let\TotalTTC\TotalTTC
+
+	\cr \hline \cr
+	Total HT& & & \TotalHT \cr
+	TVA \TVARate\% & & & \TotalTVA \cr \cr
+	\hline \hline \cr
+	\textbf{Total TTC} & & & \TotalTTC
+}
+\newcommand{\Products}{}
+\AddProduct{\WorkDescription}{\WorkQuantity}{\Rate}
+
+% Styling
+\DeclareUnicodeCharacter{2028}{\linebreak}
+\geometry{verbose,tmargin=4em,bmargin=8em,lmargin=6em,rmargin=6em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\setlength{\parindent}{0pt}
+\renewcommand{\headrulewidth}{0pt}
+
+% Footer
+\cfoot{
+	\CompanyName ~--~ \CompanyOwner ~--~ \CompanyStreet, \CompanyZipCode,  \CompanyCity, \CompanyCountry\newline
+	Téléphone : \CompanyPhone ~--~ E-mail : \CompanyEmail\newline
+	Site web : \CompanyWeb ~--~ Numéro TVA : \CompanyTVA
+}
+
+\begin{document}
+	\tikz[remember picture,overlay] {
+		\draw [CustomRed, line width=5mm]
+		(current page.south west)
+		rectangle
+		(current page.north east)}
+
+	\begin{tikzpicture}[remember picture,overlay]
+		\node[anchor=north west, yshift=-20pt, xshift=40pt]
+		at (current page.north west)
+		{\includegraphics[height=50pt]{logo.png}};
+	\end{tikzpicture}
+
+	\begin{flushright}
+		\textbf{\CompanyName}\\
+		\CompanyOwner\\
+		\CompanyStreet\\
+		\CompanyZipCode,  \CompanyCity\\
+		\CompanyCountry
+	\end{flushright}
+
+	\begin{center}
+		\Large{\textbf{Devis n° : \QuotationNumber}}\\
+		\small{\textbf{Devis mensuel (durée de validité d'un mois à compter de la date d'émission)}}
+	\end{center}
+	\textcolor{CustomRed}{\rule{17cm}{0.5mm}}
+
+	\begin{flushleft}
+		\textbf{\ClientName}\\
+		\ifthenelse{\equal{\ClientHasTVA}{true}}{
+			Numéro de TVA : \ClientTVA\\}{}
+		\ClientStreet\\
+		\ClientZipCode, \ClientCity\\
+		\ClientCountry
+	\end{flushleft}
+
+	\begin{flushright}
+		\CompanyCity, le \QuotationDate
+	\end{flushright}
+
+	\begin{center}
+		\large\textbf{Récapitulatif}
+	\end{center}
+
+	\newcolumntype{P}[1]{>{\raggedright}p{#1}}
+
+	\begin{center}
+		\begin{tabular}{P{8cm}ccc}
+			\arrayrulecolor{CustomRed}
+			\noalign{\global\arrayrulewidth=0.5mm}
+			\textbf{Description} & \textbf{Prix unitaire (\RateUnit)} & \textbf{Quantité} & \textbf{Montant (€)}\\
+			\cr \hline \ComputeQuotation{}
+		\end{tabular}
+	\end{center}
+	\begin{center}
+		\large\textbf{Descriptif des prestations fournies}
+	\end{center}
+
+	\begin{flushleft}
+		\begin{itemize}
+			\item[$\bullet$] Ajout et modification de fonctionnalités
+			\item[$\bullet$] Optimisation algorithmique
+			\item[$\bullet$] Optimisation de requêtes de bases de données et de performances
+			\item[$\bullet$] Refactorisation du code et amélioration de la couverture de tests
+			\item[$\bullet$] Maintien d'application (TMA)
+			\item[$\bullet$] Requêtage en base de données
+			\item[$\bullet$] Déploiement en environnement de recette et production
+		\end{itemize}
+	\end{flushleft}
+
+	\begin{flushleft}
+		\small{}
+	\end{flushleft}
+\end{document}
