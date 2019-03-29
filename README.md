@@ -1,7 +1,7 @@
 Invoice generator [![Star this repo](http://githubbadges.com/star.svg?user=ProgrammingSam&repo=quotation-generator&style=flat)](https://github.com/ProgrammingSam/quotation-generator) [![Fork this repo](http://githubbadges.com/fork.svg?user=ProgrammingSam&repo=quotation-generator&style=flat)](https://github.com/ProgrammingSam/quotation-generator/fork) [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
 ===========
 
-Generate an quotation in PDF from a LaTeX template file.
+Generate a quotation in PDF from a LaTeX template file.
 
 Dependencies :
 -------------
@@ -22,7 +22,7 @@ Usage :
 rake -T
 rake clean              # Remove any temporary products
 rake clobber            # Remove any generated file
-rake quotation[client]  # Generate an 'quotation' for a client
+rake quotation[client]  # Generate a 'quotation' for a client
 ```
 
 **Note :** for zsh users, use `rake quotation\[client\]` synthax.
