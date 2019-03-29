@@ -1,7 +1,7 @@
-Invoice generator [![Star this repo](http://githubbadges.com/star.svg?user=ProgrammingSam&repo=invoice-generator&style=flat)](https://github.com/ProgrammingSam/invoice-generator) [![Fork this repo](http://githubbadges.com/fork.svg?user=ProgrammingSam&repo=invoice-generator&style=flat)](https://github.com/ProgrammingSam/invoice-generator/fork) [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
+Invoice generator [![Star this repo](http://githubbadges.com/star.svg?user=ProgrammingSam&repo=quotation-generator&style=flat)](https://github.com/ProgrammingSam/quotation-generator) [![Fork this repo](http://githubbadges.com/fork.svg?user=ProgrammingSam&repo=quotation-generator&style=flat)](https://github.com/ProgrammingSam/quotation-generator/fork) [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
 ===========
 
-Generate an invoice in PDF from a LaTeX template file (belgian legal format).
+Generate an quotation in PDF from a LaTeX template file.
 
 Dependencies :
 -------------
@@ -14,18 +14,18 @@ Usage :
 -------------
 
 - Edit the config.yaml file with your company information;
-- Edit the config.yaml file with your invoice information;
+- Edit the config.yaml file with your quotation information;
 - Edit/add your clients to the config.yaml file;
-- Invoke the tasks defined in the rakefile to generate an invoice :
+- Invoke the tasks defined in the rakefile to generate a quotation :
 
 ```
 rake -T
-rake clean            # Remove any temporary products
-rake clobber          # Remove any generated file
-rake invoice[client]  # Generate an 'invoice' for a client
+rake clean              # Remove any temporary products
+rake clobber            # Remove any generated file
+rake quotation[client]  # Generate an 'quotation' for a client
 ```
 
-**Note :** for zsh users, use `rake invoice\[client\]` synthax.
+**Note :** for zsh users, use `rake quotation\[client\]` synthax.
 
 Feel free to fork and custom.
 
