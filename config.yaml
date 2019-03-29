@@ -33,17 +33,13 @@ clients:
     tva: "BE 0934581909"
     zip_code: "59800"
 
-invoice:
-  date: "1 février 2019"
-  due_date: "1 mars 2019"
-  number: "BE-2019-02-01-A"
+quotation:
+  date: "29 mars 2019"
   rate_unit: "€/j"
-  rate: "325"
-  work_description: "Réalisation d'un générateur de factures (rake tasks, yaml, LaTeX)"
-  work_quantity: "2"
+  rate: "330.57875"
+  work_description: "8 journées prestées dans les bureaux de l'entreprise durant le mois à compter du premier du mois, dates définies de commun accord entre le client et le prestataire"
+  work_quantity: "8"
+  number: "2019/1"
 
 legal:
-  interest: "1"
-  minimal_surcharge: "50"
-  surcharge: "10"
   tva_rate: "21"
