@@ -1,4 +1,4 @@
-Invoice generator [![Star this repo](http://githubbadges.com/star.svg?user=ProgrammingSam&repo=quotation-generator&style=flat)](https://github.com/ProgrammingSam/quotation-generator) [![Fork this repo](http://githubbadges.com/fork.svg?user=ProgrammingSam&repo=quotation-generator&style=flat)](https://github.com/ProgrammingSam/quotation-generator/fork) [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
+Quotation generator [![Star this repo](http://githubbadges.com/star.svg?user=ProgrammingSam&repo=quotation-generator&style=flat)](https://github.com/ProgrammingSam/quotation-generator) [![Fork this repo](http://githubbadges.com/fork.svg?user=ProgrammingSam&repo=quotation-generator&style=flat)](https://github.com/ProgrammingSam/quotation-generator/fork) [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
 ===========
 
 Generate a quotation in PDF from a LaTeX template file.
