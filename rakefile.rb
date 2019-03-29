@@ -22,5 +22,5 @@ rule '.pdf', [:client] => '.tex' do |t|
   sh "pdflatex #{t.source}"
 end
 
-desc("Generate an 'invoice' for a client")
-task :invoice, [:client] => ['invoice.pdf']
+desc("Generate an 'quotation' for a client")
+task :quotation, [:client] => ['quotation.pdf']
