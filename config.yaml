@@ -36,9 +36,9 @@ clients:
 quotation:
   date: "29 mars 2019"
   rate_unit: "€/j"
-  rate: "330.57875"
-  work_description: "8 journées prestées dans les bureaux de l'entreprise durant le mois à compter du premier du mois, dates définies de commun accord entre le client et le prestataire"
-  work_quantity: "8"
+  rate: "340"
+  work_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  work_quantity: "2"
   number: "2019/1"
 
 legal:

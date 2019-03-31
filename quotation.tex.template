@@ -85,7 +85,7 @@
 	\textbf{Total TTC} & & & \TotalTTC
 }
 \newcommand{\Products}{}
-\AddProduct{\WorkDescription}{\WorkQuantity}{\Rate}
+\AddProduct{\small{\WorkDescription}}{\WorkQuantity}{\Rate}
 
 % Styling
 \DeclareUnicodeCharacter{2028}{\linebreak}
@@ -99,9 +99,11 @@
 
 % Footer
 \cfoot{
-	\CompanyName ~--~ \CompanyOwner ~--~ \CompanyStreet, \CompanyZipCode,  \CompanyCity, \CompanyCountry\newline
-	Téléphone : \CompanyPhone ~--~ E-mail : \CompanyEmail\newline
-	Site web : \CompanyWeb ~--~ Numéro TVA : \CompanyTVA
+	\small{
+		\CompanyName ~--~ \CompanyOwner ~--~ \CompanyStreet, \CompanyZipCode,  \CompanyCity, \CompanyCountry\newline
+		Téléphone : \CompanyPhone ~--~ E-mail : \CompanyEmail\newline
+		Site web : \CompanyWeb ~--~ Numéro TVA : \CompanyTVA
+	}
 }
 
 \begin{document}
@@ -121,28 +123,24 @@
 		\textbf{\CompanyName}\\
 		\CompanyOwner\\
 		\CompanyStreet\\
-		\CompanyZipCode,  \CompanyCity\\
+		\CompanyZipCode, \CompanyCity\\
 		\CompanyCountry
 	\end{flushright}
 
 	\begin{center}
 		\Large{\textbf{Devis n° : \QuotationNumber}}\\
-		\small{\textbf{Devis mensuel (durée de validité d'un mois à compter de la date d'émission)}}
+		\small{\textbf{Devis mensuel à renvoyer signé (durée de validité d'un mois à compter de la date d'émission)}}
 	\end{center}
 	\textcolor{CustomRed}{\rule{17cm}{0.5mm}}
 
-	\begin{flushleft}
-		\textbf{\ClientName}\\
-		\ifthenelse{\equal{\ClientHasTVA}{true}}{
-			Numéro de TVA : \ClientTVA\\}{}
-		\ClientStreet\\
-		\ClientZipCode, \ClientCity\\
-		\ClientCountry
-	\end{flushleft}
-
-	\begin{flushright}
-		\CompanyCity, le \QuotationDate
-	\end{flushright}
+	\textbf{\ClientName}\\
+	\ifthenelse{\equal{\ClientHasTVA}{true}}{
+		Numéro de TVA : \ClientTVA\\}{}
+	\ClientStreet\\
+	\ClientZipCode, \ClientCity\\
+	\ClientCountry
+	\hfill
+	\CompanyCity, le \QuotationDate
 
 	\begin{center}
 		\large\textbf{Récapitulatif}
@@ -163,18 +161,21 @@
 	\end{center}
 
 	\begin{flushleft}
-		\begin{itemize}
-			\item[$\bullet$] Ajout et modification de fonctionnalités
-			\item[$\bullet$] Optimisation algorithmique
-			\item[$\bullet$] Optimisation de requêtes de bases de données et de performances
-			\item[$\bullet$] Refactorisation du code et amélioration de la couverture de tests
-			\item[$\bullet$] Maintien d'application (TMA)
-			\item[$\bullet$] Requêtage en base de données
-			\item[$\bullet$] Déploiement en environnement de recette et production
-		\end{itemize}
+		\small{
+			\begin{itemize}
+				\item[$\bullet$] Ajout et modification de fonctionnalités
+				\item[$\bullet$] Optimisation algorithmique
+				\item[$\bullet$] Optimisation de requêtes de bases de données et de performances
+				\item[$\bullet$] Refactorisation du code et amélioration de la couverture de tests
+				\item[$\bullet$] Maintien d'application (TMA)
+				\item[$\bullet$] Requêtage en base de données
+				\item[$\bullet$] Déploiement en environnement de recette et production
+			\end{itemize}
+		}
 	\end{flushleft}
 
-	\begin{flushleft}
-		\small{}
-	\end{flushleft}
+
+	\small{Signature prestataire}
+	\hfill
+	\small{Signature client précédée de la mension "lu et approuvé"}
 \end{document}
